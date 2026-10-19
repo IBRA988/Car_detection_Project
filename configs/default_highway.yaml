@@ -1,0 +1,107 @@
+# Default Highway Traffic Analysis Configuration
+model:
+  weights: "yolov8n.pt"
+  confidence_threshold: 0.30
+  iou_threshold: 0.45
+  device: "auto"  # "auto", "cpu", "cuda", "mps"
+  target_classes:
+    - 2   # car
+    - 3   # motorcycle
+    - 5   # bus
+    - 7   # truck
+  class_names:
+    2: "car"
+    3: "motorcycle"
+    5: "bus"
+    7: "truck"
+
+video:
+  input_path: "4K_Video_of_Highway_Traffic_720p.mp4"
+  output_path: "output/analyzed_highway.mp4"
+  mask_path: "full mask.png"
+  target_fps: 30.0
+  resize_width: null
+  resize_height: null
+
+tracker:
+  max_age: 25
+  min_hits: 3
+  iou_threshold: 0.30
+  track_history_length: 30
+
+estimator:
+  default_px_to_meter: 0.055
+  min_displacement_px: 1.5
+  max_speed_kmh: 220.0
+  min_speed_kmh: 5.0
+  speed_smoothing_factor: 0.65  # EMA weight: alpha * prev + (1 - alpha) * curr
+
+lanes:
+  left:
+    - name: "Left Lane 1"
+      polygon: [[440, 287], [375, 355], [480, 368], [519, 293]]
+      px_to_meter: 0.055
+      color: [116, 63, 114]  # BGR
+      direction: "Southbound"
+    - name: "Left Lane 2"
+      polygon: [[438, 287], [356, 280], [261, 344], [372, 355]]
+      px_to_meter: 0.055
+      color: [52, 113, 117]
+      direction: "Southbound"
+    - name: "Left Lane 3"
+      polygon: [[353, 280], [273, 272], [163, 332], [262, 344]]
+      px_to_meter: 0.055
+      color: [118, 117, 56]
+      direction: "Southbound"
+    - name: "Left Lane 4"
+      polygon: [[275, 273], [191, 269], [56, 323], [163, 333]]
+      px_to_meter: 0.055
+      color: [220, 69, 85]
+      direction: "Southbound"
+
+  right:
+    - name: "Right Lane 1"
+      polygon: [[731, 303], [772, 379], [876, 372], [806, 299]]
+      px_to_meter: 0.055
+      color: [116, 63, 114]
+      direction: "Northbound"
+    - name: "Right Lane 2"
+      polygon: [[810, 301], [877, 373], [991, 365], [893, 296]]
+      px_to_meter: 0.055
+      color: [52, 113, 117]
+      direction: "Northbound"
+    - name: "Right Lane 3"
+      polygon: [[895, 297], [992, 365], [1093, 357], [975, 294]]
+      px_to_meter: 0.055
+      color: [118, 117, 56]
+      direction: "Northbound"
+    - name: "Right Lane 4"
+      polygon: [[1112, 290], [1228, 346], [1094, 357], [973, 294]]
+      px_to_meter: 0.055
+      color: [220, 69, 85]
+      direction: "Northbound"
+
+counting_gates:
+  left_gate:
+    name: "Left Flow (Southbound)"
+    line_up: [164, 265, 533, 295]
+    line_down: [502, 369, 47, 322]
+    color: [0, 255, 127]
+  right_gate:
+    name: "Right Flow (Northbound)"
+    line_up: [698, 303, 1146, 291]
+    line_down: [723, 383, 1262, 347]
+    color: [255, 127, 0]
+
+visualization:
+  show_lanes: false             # Disable colored lane polygon shading to keep road clear
+  show_lane_speeds: false       # Disable static lane speed boxes
+  show_trails: true
+  show_bounding_boxes: true
+  show_speed_badges: true
+  show_counting_lines: true
+  single_line_gates: true       # Draw a single clean line per flow direction
+  show_hud_header: true
+  lane_alpha: 0.20
+  trail_thickness: 2
+  box_thickness: 2
