@@ -30,7 +30,6 @@
   - [4. Perspective Foreshortening & Homography Calibration](#4-perspective-foreshortening--homography-calibration)
   - [5. Temporal Speed Smoothing (Exponential Moving Average)](#5-temporal-speed-smoothing-exponential-moving-average)
 - [Performance Benchmarks](#-performance-benchmarks)
-- [Analytics & Telemetry](#-analytics--telemetry)
 - [Project Directory Layout](#-project-directory-layout)
 - [Quickstart & Installation](#-quickstart--installation)
 - [CLI Command Reference](#-cli-command-reference)
