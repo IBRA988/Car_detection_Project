@@ -14,8 +14,6 @@
   <b>A modular, real-time Computer Vision system for automated vehicle detection, multi-lane trajectory tracking, metric speed estimation, and bilateral traffic census telemetry.</b>
 </p>
 
-![Traffic Vision Banner](docs/assets/banner.png)
-
 </div>
 
 ---
