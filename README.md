@@ -149,32 +149,6 @@ Evaluated on standard highway benchmark footage ($1280 \times 720$ resolution @ 
 
 ---
 
-## 📈 Analytics & Telemetry
-
-The pipeline generates real-time telemetry logs and structured JSON metrics reports detailing traffic velocity distribution, flow rates, and modal split:
-
-![Metrics Sample](docs/assets/metrics_sample.png)
-
-```json
-{
-  "processed_frames": 4509,
-  "total_wall_time_seconds": 150.3,
-  "average_fps": 30.0,
-  "total_vehicles_counted": 412,
-  "flow_left": 218,
-  "flow_right": 194,
-  "class_breakdown": {
-    "car": 346,
-    "truck": 42,
-    "bus": 16,
-    "motorcycle": 8
-  },
-  "lane_speeds_kmh": [98.4, 104.2, 112.7, 121.5, 96.1, 102.8, 109.3, 118.0]
-}
-```
-
----
-
 ## 📁 Project Directory Layout
 
 ```
